@@ -1,0 +1,26 @@
+{
+  "name": "TheScraper",
+  "description": "Tap into the awesome power of Chrome's Network Tab",
+  "version": "2.0",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      // "matches":["https://www.amazon.com/*", "https://www.alibaba.com/*"],
+       "matches":["<all_urls>"],
+      "js": [
+        "vendors/jquery-3.3.1.min.js", "js/app/content.js"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": ["vendors/jquery-3.3.1.min.js","background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_title": "Chrome Debugger Features"
+  },
+    "permissions": [ "debugger", "webRequest", "webRequestBlocking", "<all_urls>"],
+  "manifest_version": 2
+}
