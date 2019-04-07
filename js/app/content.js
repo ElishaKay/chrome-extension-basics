@@ -19,15 +19,17 @@ function wait(ms){
 }
 
 if(window.location.href.includes('https://www.amazon.com/s?k=funny+gifts')){
-	let dataSource = 
 	console.log('loaded Amazon Search Page :)');
-
 	let amazonData = document.querySelectorAll('.sg-col-inner');
-	console.log('amazonData: ', amazonData);
-	sendToBackground('amazon-data', amazonData);
-	nextPage();
-}
 
+	if(amazonData){
+		console.log('amazonData: ', amazonData);
+		sendToBackground('amazon-data', amazonData);
+		nextPage();
+	} else {
+		console.log('no amazonData fetched. You probably got the captcha.')
+	}
+}
 
 function nextPage(){
 	loopIndex++;
