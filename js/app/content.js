@@ -1,3 +1,8 @@
+let loopIndex = 0;
+
+if(localStorage.getItem('loopIndex')){
+	loopIndex = localStorage.getItem('loopIndex');
+}
 
 console.log("Content js script loaded.");
 
@@ -20,13 +25,17 @@ if(window.location.href.includes('https://www.amazon.com/s?k=funny+gifts')){
 	let amazonData = document.querySelectorAll('.sg-col-inner');
 	console.log('amazonData: ', amazonData);
 	sendToBackground('amazon-data', amazonData);
+	nextPage();
 }
 
 
 function nextPage(){
 	loopIndex++;
+	if(loopIndex==19){
+		loopIndex = 0;
+	}
 	localStorage.setItem('loopIndex', loopIndex);
-	window.location.href = `${campaign_list[campaign_link_number]}/comments`;
+	window.location.href = `https://www.amazon.com/s?k=funny+gifts&page=${loopIndex}`;
 }
 
 function sendToBackground(dataSource, data){
