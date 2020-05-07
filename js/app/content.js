@@ -10,26 +10,19 @@ document.onerror = function(event) {
 	console.log('event: ',event);
 }
 
-function wait(ms){
-	  var start = new Date().getTime();
-	  var end = start;
-	  while(end < start + ms) {
-	  end = new Date().getTime();
-	  }
-}
-
 if(window.location.href.includes('https://www.amazon.com/s?k=funny+gifts')){
 	console.log('loaded Amazon Search Page :)');
 	let amazonData = document.querySelectorAll('.sg-col-inner');
-	wait(10000);
-
-	if(amazonData){
-		console.log('amazonData: ', amazonData);
-		sendToBackground('amazon-data', amazonData);
-		nextPage();
-	} else {
-		console.log('no amazonData fetched. You probably got the captcha.')
-	}
+	
+	setTimeout(function(){ 
+		if(amazonData){
+			console.log('amazonData: ', amazonData);
+			sendToBackground('amazon-data', amazonData);
+			nextPage();
+		} else {
+			console.log('no amazonData fetched. You probably got the captcha.')
+		}
+	}, 10000);
 }
 
 function nextPage(){
