@@ -21,6 +21,7 @@ function wait(ms){
 if(window.location.href.includes('https://www.amazon.com/s?k=funny+gifts')){
 	console.log('loaded Amazon Search Page :)');
 	let amazonData = document.querySelectorAll('.sg-col-inner');
+	wait(10000);
 
 	if(amazonData){
 		console.log('amazonData: ', amazonData);
